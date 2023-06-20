@@ -36,10 +36,6 @@ init =
       , randomAtmosphericInt = Nothing
       , currentTime = Time.millisToPosix 0
 
-      -- IMAGE
-      , publicImageDict = Dict.empty
-      , imageUserDict = Dict.empty
-
       -- USER
       , authenticationDict = Dict.empty
 

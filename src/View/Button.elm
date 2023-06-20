@@ -104,4 +104,4 @@ adminPopup model =
 
 runTask : Element FrontendMsg
 runTask =
-    buttonTemplate [] AdminRunTask "Toggle Demo Lock"
+    buttonTemplate [] AdminRunTask "Run backend task"

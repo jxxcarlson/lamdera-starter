@@ -151,6 +151,10 @@ update msg model =
                     ( { model | popupState = NoPopup }, Cmd.none )
 
                 SignUpPopup ->
+                    if model.popupState == SignUpPopup then
+                        ( { model | popupState = NoPopup }, Cmd.none )
+
+                    else
                     ( { model
                         | popupState = SignUpPopup
                         , inputUsername = ""
@@ -162,10 +166,12 @@ update msg model =
                     )
 
                 AdminPopup ->
+                    if model.popupState == AdminPopup then
+                        ( { model | popupState = NoPopup }, Cmd.none )
+
+                    else
                     ( { model | popupState = AdminPopup }, sendToBackend SendUsers )
 
-                state ->
-                    ( { model | popupState = state }, Cmd.none )
 
 
         -- SIGN UP, IN, OUT
@@ -210,10 +216,7 @@ update msg model =
               Nav.pushUrl model.key "/"
             )
 
-        GrantGuestAccess ->
-            ( { model | currentUser = Just User.guest }
-            , sendToBackend (SignInBE "guest" (Authentication.encryptForTransit "hohoho6666"))
-            )
+
 
         -- ADMIN
         AdminRunTask ->
@@ -251,16 +254,13 @@ updateFromBackend msg model =
             else
                 ( { model | currentUser = Just user, message = "" }, Cmd.none )
 
-        LoginGuest ->
-            ( { model | currentUser = Just User.guest }
-            , Cmd.none
-              -- sendToBackend (GetDocumentBySlugForGuest "/g/jxxcarlson-welcome-to-l1-2021-07-29")
-            )
+
+
 
 
 view : Model -> { title : String, body : List (Html.Html FrontendMsg) }
 view model =
-    { title = "Image Library"
+    { title = "Lamdera Starter App"
     , body =
         [ View.Main.view model ]
     }

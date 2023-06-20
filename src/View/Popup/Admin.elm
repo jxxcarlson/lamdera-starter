@@ -7,6 +7,7 @@ import Types exposing (FrontendModel, FrontendMsg(..), PopupState(..))
 import User exposing (User)
 import View.Button
 import View.Color
+import View.Geometry as Geometry
 import View.Style
 import View.Utility
 
@@ -15,12 +16,12 @@ view : FrontendModel -> Element FrontendMsg
 view model =
     View.Utility.showIf (model.popupState == AdminPopup) <|
         E.column
-            [ E.width (E.px 500)
-            , E.height (E.px 700)
+            [ E.width (E.px (Geometry.appWidth model - 400))
+            , E.height (E.px (Geometry.mainColumnHeight model))
             , Font.size 14
             , Font.color (E.rgb255 0 0 0)
             , View.Style.bgGray 0.8
-            , E.moveUp (toFloat <| model.windowHeight - 168)
+            --, E.moveUp (toFloat <| 100)
             , E.moveRight 380
             , E.paddingXY 18 18
             , E.spacing 12

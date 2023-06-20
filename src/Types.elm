@@ -76,10 +76,6 @@ type alias BackendModel =
     , uuidCount : Int
     , randomAtmosphericInt : Maybe Int
 
-    -- IMAGE
-    , publicImageDict : ImageDict
-    , imageUserDict : ImageUserDict
-
     -- USER
     , authenticationDict : AuthenticationDict
 
@@ -105,7 +101,6 @@ type FrontendMsg
     | InputPassword String
     | InputPasswordAgain String
     | InputEmail String
-    | GrantGuestAccess
       -- ADMIN
     | AdminRunTask
     | GetUsers
@@ -125,11 +120,6 @@ type MessageStatus
 type PopupState
     = NoPopup
     | AdminPopup
-    | ImagePopup
-    | ImageFromClipboardPopup
-    | ImageMenu
-    | GrabImage
-    | ImageRecordsPopup
     | SignUpPopup
 
 
@@ -165,7 +155,7 @@ type ToFrontend
     | SendMessage String
     | UserSignedIn User ClientId
     | SendUser User
-    | LoginGuest
+
 
 
 type AppState

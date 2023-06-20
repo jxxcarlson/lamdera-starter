@@ -35,4 +35,4 @@ messageRow model =
         , View.Style.bgGray 0.1
         , Font.color (E.rgb 0 1 0)
         ]
-        [ E.text model.message ]
+        [ E.text <| "Messages: " ++ model.message ]
